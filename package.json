@@ -1,0 +1,20 @@
+{
+  "name": "cachemock",
+  "version": "0.1.0",
+  "description": "Cache calls so you don't have to",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "mock",
+    "unit",
+    "tests",
+    "cache"
+  ],
+  "author": "Leonardo Moura",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^3.1.2"
+  }
+}
