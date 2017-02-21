@@ -8,7 +8,7 @@ describe('Cachemock', function() {
       callCount += 1;
       return cb(null, a + b);
     }
-    const mocked = cachemock(realfun, 2);
+    const mocked = cachemock(realfun);
     let retValue;
     mocked(1, 2, (err, c) => {
       assert.equal(c, 3);
@@ -29,7 +29,7 @@ describe('Cachemock', function() {
       callCount += 1;
       return cb(null, a + b);
     }
-    const mocked = cachemock(realfun, 2);
+    const mocked = cachemock(realfun);
     let retValue;
     mocked(1, 2, (err, c) => {
       assert.equal(c, 3);
@@ -50,7 +50,7 @@ describe('Cachemock', function() {
       callCount += 1;
       return cb(null, Object.keys(obj).length);
     }
-    const mocked = cachemock(realfun, 1);
+    const mocked = cachemock(realfun);
     let retValue;
     mocked({ a: 1, b: 2 }, (err, c) => {
       assert.equal(c, 2);

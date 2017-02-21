@@ -1,5 +1,5 @@
 const cachemock = require('./');
-const get = cachemock(require('request').get, 1);
+const get = cachemock(require('request').get);
 
 const begin = Number(new Date());
 get('https://jsonplaceholder.typicode.com/posts/1', (err, response, body) => {
