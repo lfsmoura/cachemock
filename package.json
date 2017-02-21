@@ -16,5 +16,9 @@
   "license": "MIT",
   "devDependencies": {
     "mocha": "^3.1.2"
-  }
+  },
+  "repository": {
+   "type": "git",
+   "url": "git+https://github.com/lfsmoura/cachemock.git"
+ }
 }
