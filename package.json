@@ -1,6 +1,6 @@
 {
   "name": "cachemock",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Cache calls so you don't have to",
   "main": "index.js",
   "scripts": {
