@@ -1,7 +1,7 @@
 const { cachemockfile } = require('./');
 
 const { get } = require('request');
-const getCached = cachemockfile(get);
+const getCached = cachemockfile(get, { folder: 'test2' });
 
 function getPosts(get, cb) {
   return get('https://jsonplaceholder.typicode.com/posts/1', cb);

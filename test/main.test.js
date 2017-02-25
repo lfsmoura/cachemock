@@ -78,8 +78,30 @@ describe('Cachemockfile', function() {
     let retValue;
     mocked(1, 2, (err, c) => {
       assert.equal(c, 3);
-
+      callCount = 0;
       const mockedAgain = cachemockfile(realfun);
+
+      mockedAgain(1, 2, (err, c) => {
+
+        assert.equal(c, 3);
+        assert.equal(callCount, 0);
+        done();
+      });
+    });
+  });
+
+  it('should accept a folder', function(done) {
+    let callCount = 0;
+    function realfun(a, b, cb) {
+      callCount += 1;
+      return cb(null, a + b);
+    }
+    const mocked = cachemockfile(realfun, { folder: 'test' });
+    let retValue;
+    mocked(1, 2, (err, c) => {
+      assert.equal(c, 3);
+      callCount = 0;
+      const mockedAgain = cachemockfile(realfun, { folder: 'test' });
 
       mockedAgain(1, 2, (err, c) => {
 

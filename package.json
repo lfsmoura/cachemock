@@ -1,6 +1,6 @@
 {
   "name": "cachemock",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Cache calls so you don't have to",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,10 @@
     "mocha": "^3.1.2"
   },
   "repository": {
-   "type": "git",
-   "url": "git+https://github.com/lfsmoura/cachemock.git"
- }
+    "type": "git",
+    "url": "git+https://github.com/lfsmoura/cachemock.git"
+  },
+  "dependencies": {
+    "md5": "^2.2.1"
+  }
 }

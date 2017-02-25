@@ -1,7 +1,11 @@
 const fs = require('fs');
+const path = require('path');
 
-function FileCache(id) {
-  this.filename = `.${id}.json`;
+const md5 = require('md5');
+
+function FileCache(fun, { folder }) {
+  const hash = md5(fun.toString());
+  this.filename = path.join(folder, `.${hash}.json`);
   if (fs.existsSync(this.filename)) {
     const data = fs.readFileSync(this.filename, 'utf8');
     this.cache = new Map(JSON.parse(data));
@@ -40,8 +44,8 @@ MemoryCache.prototype.set = function(key, value) {
   return this.cache.set(key, value);
 }
 
-const cachemock = function(fun, cacheType = MemoryCache) {
-    const cache = new cacheType(fun.name);
+const cachemock = function(fun, { cacheType = MemoryCache, folder = '.' } = {}) {
+    const cache = new cacheType(fun, { folder });
     return function(...args) {
 
       // the last argument is the callback
@@ -64,8 +68,8 @@ const cachemock = function(fun, cacheType = MemoryCache) {
     };
 };
 
-cachemock.cachemockfile = function (fn) {
-   return cachemock(fn, FileCache);
+cachemock.cachemockfile = function (fn, opt) {
+   return cachemock(fn, Object.assign({ cacheType: FileCache }, opt));
 }
 
 module.exports = cachemock;

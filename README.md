@@ -49,3 +49,10 @@ it('Should get a list of posts', (done) => {
 The first time you run your tests all calls will effectively be made. A file will be created in your root directory with the name `.get.json`. The second time your run your tests this file wiil be read and the calls are going to be mocked.
 
 Note that we have used dependency injection in our example function. If your function does not use dependency injection, you could use a library that patches dependencies such as `mockery`.
+
+If you use `cachmockfile`, you can specify the folder you want to save your cache. The folder has to exist.
+
+``` js
+const { cachemockfile } = require('cachemock');
+const getCached = cachemockfile(require('request').get, { folder: 'test' });
+```
